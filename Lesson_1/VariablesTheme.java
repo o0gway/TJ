@@ -63,46 +63,46 @@ public class VariablesTheme {
         // Перестановка значений переменных
         System.out.println("\n5. Перестановка значений переменных");
         System.out.println("***С помощью третьей переменной***");
-        int firstNum = 2;
-        int secondNum = 5;
-        System.out.println("Исходное значение первой переменной: " + firstNum);
-        System.out.println("Исходное значение второй переменной: " + secondNum);
-        int tmp = firstNum;
-        firstNum = secondNum;
-        secondNum = tmp;
-        System.out.println("Значение первой переменной после: " + firstNum);
-        System.out.println("Значение второй переменной после: " + secondNum);
+        int num1 = 2;
+        int num2 = 5;
+        System.out.println("Исходное значение первой переменной: " + num1);
+        System.out.println("Исходное значение второй переменной: " + num2);
+        int tmp = num1;
+        num1 = num2;
+        num2 = tmp;
+        System.out.println("Значение первой переменной после: " + num1);
+        System.out.println("Значение второй переменной после: " + num2);
         System.out.println("***С помощью арифметических операций***");
-        System.out.println("Исходное значение первой переменной: " + firstNum);
-        System.out.println("Исходное значение второй переменной: " + secondNum);
-        firstNum += secondNum;
-        secondNum = firstNum - secondNum;
-        firstNum -= secondNum;
-        System.out.println("Значение первой переменной после: " + firstNum);
-        System.out.println("Значение второй переменной после: " + secondNum);
+        System.out.println("Исходное значение первой переменной: " + num1);
+        System.out.println("Исходное значение второй переменной: " + num2);
+        num1 += num2;
+        num2 = num1 - num2;
+        num1 -= num2;
+        System.out.println("Значение первой переменной после: " + num1);
+        System.out.println("Значение второй переменной после: " + num2);
         System.out.println("***С помощью побитовой операции ^***");
-        System.out.println("Исходное значение первой переменной: " + firstNum);
-        System.out.println("Исходное значение второй переменной: " + secondNum);
-        firstNum ^= secondNum;
-        secondNum ^= firstNum;
-        firstNum ^= secondNum;
-        System.out.println("Значение первой переменной после: " + firstNum);
-        System.out.println("Значение второй переменной после: " + secondNum);
+        System.out.println("Исходное значение первой переменной: " + num1);
+        System.out.println("Исходное значение второй переменной: " + num2);
+        num1 ^= num2;
+        num2 ^= num1;
+        num1 ^= num2;
+        System.out.println("Значение первой переменной после: " + num1);
+        System.out.println("Значение второй переменной после: " + num2);
 
         // Вывод символов и их кодов
         System.out.println("\n6. Вывод символов и их кодов");
         // 35, 38, 64, 94, 95
-        char symLattice = '#';
-        char symAmpersand = '&';
-        char symAt = '@';
-        char symCap = '^';
-        char symUndersore = '_';
+        char lattice = '#';
+        char ampersand = '&';
+        char at = '@';
+        char cap = '^';
+        char undersore = '_';
         System.out.println("Код символа\tСимвол из ASCII-таблицы");
-        System.out.printf("%s%15s\n", (int) symLattice, symLattice);
-        System.out.printf("%s%15s\n", (int) symAmpersand, symAmpersand);
-        System.out.printf("%s%15s\n", (int) symAt, symAt);
-        System.out.printf("%s%15s\n", (int) symCap, symCap);
-        System.out.printf("%s%15s\n", (int) symUndersore, symUndersore);
+        System.out.printf("%s%15s\n", (int) lattice, lattice);
+        System.out.printf("%s%15s\n", (int) ampersand, ampersand);
+        System.out.printf("%s%15s\n", (int) at, at);
+        System.out.printf("%s%15s\n", (int) cap, cap);
+        System.out.printf("%s%15s\n", (int) undersore, undersore);
 
         //Вывод количества сотен, десятков и единиц числа
         System.out.println("\n7. Вывод количества сотен, десятков и единиц числа");
@@ -120,21 +120,21 @@ public class VariablesTheme {
         char roundBracketRight = ')';
         System.out.printf("    %s%s\n", slash, backSlash);
         System.out.printf("   %s  %s\n", slash, backSlash);
-        System.out.printf("  %s%s%s %s%s\n", slash, symUndersore, roundBracketLeft, roundBracketRight, backSlash);
+        System.out.printf("  %s%s%s %s%s\n", slash, undersore, roundBracketLeft, roundBracketRight, backSlash);
         System.out.printf(" %s      %s\n", slash, backSlash);
         System.out.printf("%s%s%s%s%s%s%s%s%s%s\n", slash, 
-                symUndersore, symUndersore, symUndersore, symUndersore,
+                undersore, undersore, undersore, undersore,
                 slash, backSlash,
-                symUndersore, symUndersore, backSlash);
+                undersore, undersore, backSlash);
 
         // Вывод произведения и суммы цифр числа
         System.out.println("\n9. Вывод произведения и суммы цифр числа");
-        numInt = 345;
-        int ones = numInt % 10;
-        int tens = numInt / 10 % 10;
-        int hundreds = numInt / 100 % 10;
-        System.out.printf("Сумма цифр числа %d = %d\n", numInt, (ones + tens + hundreds));
-        System.out.printf("Произведение цифр числа %d = %d\n", numInt, (ones * tens * hundreds));
+        srcNum = 345;
+        int ones = srcNum % 10;
+        int tens = srcNum / 10 % 10;
+        int hundreds = srcNum / 100 % 10;
+        System.out.printf("Сумма цифр числа %d = %d\n", srcNum, (ones + tens + hundreds));
+        System.out.printf("Произведение цифр числа %d = %d\n", srcNum, (ones * tens * hundreds));
 
         // Вывод времени
         System.out.println("\n10. Вывод времени");
