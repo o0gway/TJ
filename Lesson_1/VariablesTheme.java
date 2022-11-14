@@ -1,8 +1,8 @@
 public class VariablesTheme {
     public static void main(String[] args) {
-
         System.out.println("\n\t\tЗадачки на тему");
-        System.out.println("\t\"Переменные: примитивные типы данных”");
+        System.out.println("\t“Переменные: примитивные типы данных”");
+
         // Вывод значений переменных на консоль
         System.out.println("\n1. Вывод значений переменных на консоль");
         byte numCpu = 1;
@@ -27,10 +27,10 @@ public class VariablesTheme {
         int penPrice = 100;
         int bookPrice = 200;
         int discount = 11;
-        int totalDiscount = (penPrice + bookPrice) / 100 * discount;
-        System.out.println("Общая сумма скидки: " + totalDiscount);
-        int totalPriceWithDiscount = penPrice + bookPrice - totalDiscount;
-        System.out.println("Общая стоимость товаров со скидкой: " + totalPriceWithDiscount);
+        int sumDiscount = (penPrice + bookPrice) / 100 * discount;
+        System.out.println("Общая сумма скидки: " + sumDiscount);
+        int discountPrice = penPrice + bookPrice - sumDiscount;
+        System.out.println("Общая стоимость товаров со скидкой: " + discountPrice);
 
         // Вывод слова JAVA
         System.out.println("\n3. Вывод слова JAVA");
@@ -65,12 +65,11 @@ public class VariablesTheme {
         System.out.println("***С помощью третьей переменной***");
         int firstNum = 2;
         int secondNum = 5;
-        int heapNum;
         System.out.println("Исходное значение первой переменной: " + firstNum);
         System.out.println("Исходное значение второй переменной: " + secondNum);
-        heapNum = firstNum;
+        int tmp = firstNum;
         firstNum = secondNum;
-        secondNum = heapNum;
+        secondNum = tmp;
         System.out.println("Значение первой переменной после: " + firstNum);
         System.out.println("Значение второй переменной после: " + secondNum);
         System.out.println("***С помощью арифметических операций***");
@@ -93,25 +92,25 @@ public class VariablesTheme {
         // Вывод символов и их кодов
         System.out.println("\n6. Вывод символов и их кодов");
         // 35, 38, 64, 94, 95
-        char sym1 = '#';
-        char sym2 = '&';
-        char sym3 = '@';
-        char sym4 = '^';
+        char symLattice = '#';
+        char symAmpersand = '&';
+        char symAt = '@';
+        char symCap = '^';
         char symUndersore = '_';
         System.out.println("Код символа\tСимвол из ASCII-таблицы");
-        System.out.printf("%s\t\t%s\n", (int) sym1, sym1);
-        System.out.printf("%s\t\t%s\n", (int) sym2, sym2);
-        System.out.printf("%s\t\t%s\n", (int) sym3, sym3);
-        System.out.printf("%s\t\t%s\n", (int) sym4, sym4);
-        System.out.printf("%s\t\t%s\n", (int) symUndersore, symUndersore);
+        System.out.printf("%s%15s\n", (int) symLattice, symLattice);
+        System.out.printf("%s%15s\n", (int) symAmpersand, symAmpersand);
+        System.out.printf("%s%15s\n", (int) symAt, symAt);
+        System.out.printf("%s%15s\n", (int) symCap, symCap);
+        System.out.printf("%s%15s\n", (int) symUndersore, symUndersore);
 
         //Вывод количества сотен, десятков и единиц числа
         System.out.println("\n7. Вывод количества сотен, десятков и единиц числа");
-        numInt = 987;
-        System.out.printf("Число %s содержит:\n", numInt);
-        System.out.printf("%d сотен\n", numInt / 100 % 10);
-        System.out.printf("%d десятков\n", numInt / 10 % 10);
-        System.out.printf("%d единиц\n", numInt % 10);
+        int srcNum = 987;
+        System.out.printf("Число %s содержит:\n", srcNum);
+        System.out.printf("%d сотен\n", srcNum / 100 % 10);
+        System.out.printf("%d десятков\n", srcNum / 10 % 10);
+        System.out.printf("%d единиц\n", srcNum % 10);
 
         // Вывод в консоль ASCII-арт Дюка
         System.out.println("\n8. Вывод в консоль ASCII-арт Дюка");
@@ -131,19 +130,18 @@ public class VariablesTheme {
         // Вывод произведения и суммы цифр числа
         System.out.println("\n9. Вывод произведения и суммы цифр числа");
         numInt = 345;
-        int numUnit = numInt % 10;
-        int numDecimal = numInt / 10 % 10;
-        int numOneHundred = numInt / 100 % 10;
-        System.out.printf("Сумма цифр числа %d = %d\n", numInt, (numUnit + numDecimal + numOneHundred));
-        System.out.printf("Произведение цифр числа %d = %d\n", numInt, (numUnit * numDecimal * numOneHundred));
+        int ones = numInt % 10;
+        int tens = numInt / 10 % 10;
+        int hundreds = numInt / 100 % 10;
+        System.out.printf("Сумма цифр числа %d = %d\n", numInt, (ones + tens + hundreds));
+        System.out.printf("Произведение цифр числа %d = %d\n", numInt, (ones * tens * hundreds));
 
         // Вывод времени
         System.out.println("\n10. Вывод времени");
         int totalSeconds = 86399;
-        int watchSecond = 86399 % 60;
-        int watchMinute = (86399 / 60) % 60;
-        int watchHour = 86399 / 3600;
-        System.out.printf("%d:%d:%d\n", watchHour, watchMinute, watchSecond);
-
+        int second = 86399 % 60;
+        int minute = (86399 / 60) % 60;
+        int hour = 86399 / 3600;
+        System.out.printf("%d:%d:%d\n", hour, minute, second);
     }
 }
