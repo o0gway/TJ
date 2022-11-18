@@ -2,7 +2,7 @@ class IfElseStatementTheme {
     public static void main(String[] args) {
         System.out.println("\t\tЗадачки на тему");
         System.out.println("\t\t“Ветвление: if-else”");
-        System.out.println("\n1. Перевод псевдокода на язык Java (это название задачи)");
+        System.out.println("\n1. Перевод псевдокода на язык Java");
         int age = 18;
         if (age > 20) {
             System.out.println("Отлично у вас подходящий возраст.");
@@ -24,10 +24,10 @@ class IfElseStatementTheme {
             System.out.println("Добро пожаловать!");
         }
 
-        char firstCharName = "Ivan".charAt(0);
-        if (firstCharName == 'M') {
+        char capitalLetter = "Ivan".charAt(0);
+        if (capitalLetter == 'M') {
             System.out.println("Ваше имя начинается с буквы М");
-        } else if (firstCharName == 'I') {
+        } else if (capitalLetter == 'I') {
             System.out.println("Ваше имя начинается с буквы I");
         } else {
             System.out.println("Ваше имя начинается с другой буквы");
@@ -37,17 +37,17 @@ class IfElseStatementTheme {
         int num1 = 9;
         int num2 = 12;
         if (num1 > num2) {
-            System.out.println("Первое число больше второго");
+            System.out.printf("%d число больше %d", num1, num2);
         } else if (num2 > num1) {
-            System.out.println("Второе число больше первого");
+            System.out.printf("%d число больше %d", num2, num1);
         } else if (num1 == num2) {
-            System.out.println("Первое и второе число равны");
+            System.out.println("%d и %d числа равны");
         }
 
-        System.out.println("\n3. Проверка числа");
+        System.out.println("\n\n3. Проверка числа");
         num1 = 99;
         if (num1 == 0) {
-            System.out.printf("Ваше число равно %d\n", num1);
+            System.out.println("Ваше число равно " + num1);
         } else {
             if (num1 % 2 == 0) {
                 System.out.printf("Число %d четное\n", num1);
@@ -71,28 +71,28 @@ class IfElseStatementTheme {
         int hundreds1 = num1 / 100 % 10;
         int hundreds2 = num2 / 100 % 10;
 
-        System.out.printf("В числах %d и %d\n", num1, num2);
+        System.out.printf("В числах %d и %d", num1, num2);
         if (ones1 == ones2) {
-            System.out.printf("Равны единицы - числа %d\n", ones1);
+            System.out.println("\nРавны единицы - числа " + ones1);
         }
         if (tens1 == tens2) {
-            System.out.printf("Равны десятки - числа %d\n", tens1);
+            System.out.println("\nРавны десятки - числа " + tens1);
         }
         if (hundreds1 == hundreds2) {
-            System.out.printf("Равны сотни - числа %d\n", hundreds1);
+            System.out.println("\nРавны сотни - числа " + hundreds1);
         }
         if (ones1 != ones2 && tens1 != tens2 && hundreds1 != hundreds2) {
-            System.out.println("У данных чисел нет совпадающих позиций");
+            System.out.println("\nУ данных чисел нет совпадающих позиций");
         }
 
         System.out.println("\n5. Определение символа по его коду");
-        char sym1 = '\u0057';
-        System.out.printf("Символ %s:\n", sym1);
-        if ((int) sym1 >= 48 && (int) sym1 <= 57){
+        char unknownChar = '\u0057';
+        System.out.printf("Символ %s: ", unknownChar);
+        if (unknownChar >= 48 && unknownChar <= 57) {
             System.out.println("Цифра");
-        } else if ((int) sym1 >= 65 && (int) sym1 <= 90) {
+        } else if (unknownChar >= 65 && unknownChar <= 90) {
             System.out.println("Большая буква");
-        } else if ((int) sym1 >= 97 && (int) sym1 <= 122) {
+        } else if (unknownChar >= 97 && unknownChar <= 122) {
             System.out.println("Маленькая буква");
         } else {
             System.out.println("Не буква и не число");
@@ -100,63 +100,49 @@ class IfElseStatementTheme {
         
         System.out.println("\n6. Подсчет суммы вклада и начисленных банком %");
         int deposit = 300_000;
-        int percent;
+        int percent = 0;
         int depositPlusPercent;
         System.out.printf("Ваш вклад составляет: %d\n", deposit);
         if (deposit < 100_000) {
             percent = 5;
-            depositPlusPercent = deposit + deposit * percent / 100;
-            System.out.printf("Ваш процент начисления: %d\n", percent);
-            System.out.printf("Итоговая сумма с процентами составляет: %d\n", depositPlusPercent);
         } else if (deposit >= 100_000 && deposit <= 300_000) {
             percent = 7;
-            depositPlusPercent = deposit + deposit * percent / 100;
-            System.out.printf("Ваш процент начисления: %d\n", percent);
-            System.out.printf("Итоговая сумма с процентами составляет: %d\n", depositPlusPercent);
         } else if (deposit > 300_000) {
             percent = 10;
-            depositPlusPercent = deposit + deposit * percent / 100;
-            System.out.printf("Ваш процент начисления: %d\n", percent);
-            System.out.printf("Итоговая сумма с процентами составляет: %d\n", depositPlusPercent);
         }
+        depositPlusPercent = deposit + deposit * percent / 100;
+        System.out.printf("Ваш процент начисления: %d\n", percent);
+        System.out.printf("Итоговая сумма с процентами составляет: %d\n", depositPlusPercent);
 
         System.out.println("\n7. Определение оценки по предметам");
         System.out.println("Студент получил итоговые оценки по предметам:");
-        int history = 59;
-        int programing = 91;
-        int ratingHistory = 0;
-        int ragingPrograming = 0;
-        int middlePercent = (history + programing) / 2;
-        if (history <= 60) {
-            ratingHistory = 2;
-            System.out.printf("История: %d\n", ratingHistory);
-        } else if (history > 60 && history <= 73) {
-            ratingHistory = 3;
-            System.out.printf("История: %d\n", ratingHistory);
-        } else if (history > 73 && history <= 91) {
-            ratingHistory = 4;
-            System.out.printf("История: %d\n", ratingHistory);
-        } else if (history > 91) {
-            ratingHistory = 5;
-            System.out.printf("История: %d\n", ratingHistory);
+        int historySubject = 59;
+        int programingSubject = 91;
+        int ratingHistorySubject = 5;
+        int ragingProgramingSubject = 5;
+        // Подсчет оценки для предмета история
+        if (historySubject <= 60) {
+            ratingHistorySubject = 2;
+        } else if (historySubject > 60 && historySubject <= 73) {
+            ratingHistorySubject = 3;
+        } else if (historySubject > 73 && historySubject <= 91) {
+            ratingHistorySubject = 4;
         }
-
-        if (programing <= 60) {
-            ragingPrograming = 2;
-            System.out.printf("Программирование: %d\n", ragingPrograming);
-        } else if (programing > 60 && programing <= 73) {
-            ragingPrograming = 3;
-            System.out.printf("Программирование: %17d\n", ragingPrograming);
-        } else if (programing > 73 && programing <= 91) {
-            ragingPrograming = 4;
-            System.out.printf("Программирование: %d\n", ragingPrograming);
-        } else if (programing > 91) {
-            ragingPrograming = 5;
-            System.out.printf("Программирование: %d\n", ragingPrograming);
+        System.out.println("История: " + ratingHistorySubject);
+        // Подсчет оценки для предмета программирование
+        if (programingSubject <= 60) {
+            ragingProgramingSubject = 2;
+        } else if (programingSubject > 60 && programingSubject <= 73) {
+            ragingProgramingSubject = 3;
+        } else if (programingSubject > 73 && programingSubject <= 91) {
+            ragingProgramingSubject = 4;
         }
-        int middleRating = (ragingPrograming + ratingHistory) / 2;
-        System.out.printf("Средний балл оценок по предметам: %d\n", middleRating);
-        System.out.printf("Средний по предметам: %d\n", middlePercent);
+        System.out.printf("Программирование: %d\n", ragingProgramingSubject);
+        
+        int avgPercent = (historySubject + programingSubject) / 2;
+        int avgRating = (ragingProgramingSubject + ratingHistorySubject) / 2;
+        System.out.printf("Средний балл оценок по предметам: %d\n", avgRating);
+        System.out.printf("Средний по предметам: %d\n", avgPercent);
 
         System.out.println("\n8. Расчет прибыли за год");
         int rent = 5000;
