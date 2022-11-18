@@ -2,7 +2,6 @@ class CyclesTheme {
     public static void main(String[] args) {
         System.out.println("\tЗадачки на тему");
         System.out.println("\t“Циклы: for, while, do while”");
-
         System.out.println("\n1. Подсчет суммы четных и нечетных чисел");
         int evenSumNumber = 0;
         int oddSumNumber = 0;
@@ -185,7 +184,6 @@ class CyclesTheme {
                 }
             }
             System.out.println();
-            
         }
     }
 }
