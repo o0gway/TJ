@@ -87,12 +87,15 @@ class IfElseStatementTheme {
 
         System.out.println("\n5. Определение символа по его коду");
         char unknownChar = '\u0057';
+        String smallChar = "abcdefghijklmnopqrstuvwxyz";
+        String bigChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String numChar = "0123456789";
         System.out.printf("Символ %s: ", unknownChar);
-        if (unknownChar >= 48 && unknownChar <= 57) {
+        if (numChar.contains(Character.toString(unknownChar))) {
             System.out.println("Цифра");
-        } else if (unknownChar >= 65 && unknownChar <= 90) {
+        } else if (bigChar.contains(Character.toString(unknownChar))) {
             System.out.println("Большая буква");
-        } else if (unknownChar >= 97 && unknownChar <= 122) {
+        } else if (smallChar.contains(Character.toString(unknownChar))) {
             System.out.println("Маленькая буква");
         } else {
             System.out.println("Не буква и не число");
@@ -101,7 +104,6 @@ class IfElseStatementTheme {
         System.out.println("\n6. Подсчет суммы вклада и начисленных банком %");
         int deposit = 300_000;
         int percent = 0;
-        int depositPlusPercent;
         System.out.printf("Ваш вклад составляет: %d\n", deposit);
         if (deposit < 100_000) {
             percent = 5;
@@ -110,37 +112,37 @@ class IfElseStatementTheme {
         } else if (deposit > 300_000) {
             percent = 10;
         }
-        depositPlusPercent = deposit + deposit * percent / 100;
+        int interestBearingDeposit = deposit + deposit * percent / 100;
         System.out.printf("Ваш процент начисления: %d\n", percent);
-        System.out.printf("Итоговая сумма с процентами составляет: %d\n", depositPlusPercent);
+        System.out.printf("Итоговая сумма с процентами составляет: %d\n", interestBearingDeposit);
 
         System.out.println("\n7. Определение оценки по предметам");
         System.out.println("Студент получил итоговые оценки по предметам:");
-        int historySubject = 59;
-        int programingSubject = 91;
-        int ratingHistorySubject = 5;
-        int ragingProgramingSubject = 5;
+        int historyScore = 59;
+        int programingScore = 91;
+        int ratingHistory = 5;
+        int ragingPrograming = 5;
         // Подсчет оценки для предмета история
-        if (historySubject <= 60) {
-            ratingHistorySubject = 2;
-        } else if (historySubject > 60 && historySubject <= 73) {
-            ratingHistorySubject = 3;
-        } else if (historySubject > 73 && historySubject <= 91) {
-            ratingHistorySubject = 4;
+        if (historyScore <= 60) {
+            ratingHistory = 2;
+        } else if (historyScore > 60 && historyScore <= 73) {
+            ratingHistory = 3;
+        } else if (historyScore > 73 && historyScore <= 91) {
+            ratingHistory = 4;
         }
-        System.out.println("История: " + ratingHistorySubject);
+        System.out.println("История: " + ratingHistory);
         // Подсчет оценки для предмета программирование
-        if (programingSubject <= 60) {
-            ragingProgramingSubject = 2;
-        } else if (programingSubject > 60 && programingSubject <= 73) {
-            ragingProgramingSubject = 3;
-        } else if (programingSubject > 73 && programingSubject <= 91) {
-            ragingProgramingSubject = 4;
+        if (programingScore <= 60) {
+            ragingPrograming = 2;
+        } else if (programingScore > 60 && programingScore <= 73) {
+            ragingPrograming = 3;
+        } else if (programingScore > 73 && programingScore <= 91) {
+            ragingPrograming = 4;
         }
-        System.out.printf("Программирование: %d\n", ragingProgramingSubject);
+        System.out.printf("Программирование: %d\n", ragingPrograming);
         
-        int avgPercent = (historySubject + programingSubject) / 2;
-        int avgRating = (ragingProgramingSubject + ratingHistorySubject) / 2;
+        int avgPercent = (historyScore + programingScore) / 2;
+        int avgRating = (ragingPrograming + ratingHistory) / 2;
         System.out.printf("Средний балл оценок по предметам: %d\n", avgRating);
         System.out.printf("Средний по предметам: %d\n", avgPercent);
 
@@ -156,40 +158,42 @@ class IfElseStatementTheme {
         } 
 
         System.out.println("\n9. Подсчет количества банкнот");
-        int withdraw = 567;
-        int banknote1 = 50;
-        int banknote10 = 50;
-        int banknote100 = 1000;
-        int withdrawBanknote1 = 0;
-        int withdrawBanknote10 = 0;
-        int withdrawBanknote100 = 0;
+        int withdrawedMoney = 567;
+        int atAtmBanknote1 = 50;
+        int atAtmBanknote10 = 50;
+        int atAtmBanknote100 = 1000;
+        int withdrawedMoneyBanknote1 = 0;
+        int withdrawedMoneyBanknote10 = 0;
+        int withdrawedMoneyBanknote100 = 0;
         // Снимаем сотни
-        if (banknote100 > withdraw) {
-            withdrawBanknote100 = withdraw / 100 % 10;
-            banknote100 -= withdrawBanknote100 * 100;
-            System.out.printf("Снято банкнот номиналом 100: %d\n", withdrawBanknote100);
-            withdraw = withdraw - withdrawBanknote100 * 100;
+        if (atAtmBanknote100 > withdrawedMoney) {
+            withdrawedMoneyBanknote100 = withdrawedMoney / 100 % 10;
+            atAtmBanknote100 -= withdrawedMoneyBanknote100 * 100;
+            System.out.printf("Снято банкнот номиналом 100: %d\n", withdrawedMoneyBanknote100);
+            withdrawedMoney = withdrawedMoney - withdrawedMoneyBanknote100 * 100;
         } else {
             System.out.println("Снято банкнот номиналом 100: 0");
         }
         // Снимаем десятки
-        if (banknote10 > withdraw) {
-            withdrawBanknote10 = withdraw / 10 % 10;
-            banknote10 -= withdrawBanknote10 * 10;
-            System.out.printf("Снято банкнот номиналом 10: %d\n", withdrawBanknote10);
-            withdraw = withdraw - withdrawBanknote10 * 10;
+        if (atAtmBanknote10 > withdrawedMoney) {
+            withdrawedMoneyBanknote10 = withdrawedMoney / 10 % 10;
+            atAtmBanknote10 -= withdrawedMoneyBanknote10 * 10;
+            System.out.printf("Снято банкнот номиналом 10: %d\n", withdrawedMoneyBanknote10);
+            withdrawedMoney = withdrawedMoney - withdrawedMoneyBanknote10 * 10;
         } else {
-            withdrawBanknote10 = banknote10 / 10 % 10;
-            banknote10 -= withdrawBanknote10 * 10;
-            System.out.printf("Снято банкнот номиналом 10: %d\n", withdrawBanknote10);
-            withdraw = withdraw - withdrawBanknote10 * 10;
+            withdrawedMoneyBanknote10 = atAtmBanknote10 / 10 % 10;
+            atAtmBanknote10 -= withdrawedMoneyBanknote10 * 10;
+            System.out.printf("Снято банкнот номиналом 10: %d\n", withdrawedMoneyBanknote10);
+            withdrawedMoney = withdrawedMoney - withdrawedMoneyBanknote10 * 10;
         }
         // Снимаем единицы
-        withdrawBanknote1 = withdraw;
-        banknote10 -= withdrawBanknote1;
-        System.out.printf("Снято банкнот номиналом 1: %d\n", withdrawBanknote1);
+        withdrawedMoneyBanknote1 = withdrawedMoney;
+        atAtmBanknote1 -= withdrawedMoneyBanknote1;
+        System.out.printf("Снято банкнот номиналом 1: %d\n", withdrawedMoneyBanknote1);
         // Считаем деньги которые мы сняли
-        withdraw = withdrawBanknote100 * 100 + withdrawBanknote10 * 10 + withdrawBanknote1; 
-        System.out.printf("Общую сумму которую вы сняли: %d\n", withdraw);
+        withdrawedMoney = withdrawedMoneyBanknote100 * 100 + withdrawedMoneyBanknote10 * 10 + withdrawedMoneyBanknote1; 
+        System.out.printf("Общую сумму которую вы сняли: %d\n", withdrawedMoney);
+        System.out.printf("В банкомате осталось 100 - %d, 10 - %d, 1 - %d", 
+                atAtmBanknote100, atAtmBanknote10, atAtmBanknote1);
     }
 }
