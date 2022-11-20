@@ -87,15 +87,12 @@ class IfElseStatementTheme {
 
         System.out.println("\n5. Определение символа по его коду");
         char unknownChar = '\u0057';
-        String smallChar = "abcdefghijklmnopqrstuvwxyz";
-        String bigChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        String numChar = "0123456789";
         System.out.printf("Символ %s: ", unknownChar);
-        if (numChar.contains(Character.toString(unknownChar))) {
+        if (unknownChar >= '0' && unknownChar <= '9') {
             System.out.println("Цифра");
-        } else if (bigChar.contains(Character.toString(unknownChar))) {
+        } else if (unknownChar >= 'A' && unknownChar <= 'Z') {
             System.out.println("Большая буква");
-        } else if (smallChar.contains(Character.toString(unknownChar))) {
+        } else if (unknownChar >= 'a' && unknownChar <= 'z') {
             System.out.println("Маленькая буква");
         } else {
             System.out.println("Не буква и не число");
