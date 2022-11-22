@@ -3,38 +3,34 @@ class CyclesTheme {
         System.out.println("\tЗадачки на тему");
         System.out.println("\t“Циклы: for, while, do while”");
         System.out.println("\n1. Подсчет суммы четных и нечетных чисел");
-        int evenSumNumber = 0;
-        int oddSumNumber = 0;
+        int sumEvenNumbers = 0;
+        int sumOddNumbers = 0;
         int counter = -10;
         do {
             if (counter % 2 == 0) {
-                evenSumNumber += counter;
+                sumEvenNumbers += counter;
             } else {
-                oddSumNumber += counter;
+                sumOddNumbers += counter;
             }
             counter++;
         } while (counter <= 21);
         System.out.printf("В промежутке [-10, 21] сумма четных чисел = %d, а нечетных = %d", 
-                evenSumNumber, oddSumNumber);
+                sumEvenNumbers, sumOddNumbers);
 
         System.out.println("\n\n2. Вывод чисел в интервале (min и max) в порядке убывания");
         int num1 = 10;
         int num2 = 5;
         int num3 = -1;
-        int minNum = 0;
-        int maxNum = 0;
+        int minNum = num1;
+        int maxNum = num2;
         // Находим максимальное число
         if (num1 > num2 && num1 > num3) {
             maxNum = num1;
-        } else if (num2 > num1 && num2 > num3) {
-            maxNum = num2;
         } else {
             maxNum = num3;
         }
         // Находим минимальное число
-        if (num1 < num2 && num1 < num3) {
-            minNum = num1;
-        } else if (num2 < num1 && num2 < num3) {
+        if (num2 < num1 && num2 < num3) {
             minNum = num2;
         } else {
             minNum = num3;
@@ -45,34 +41,29 @@ class CyclesTheme {
 
         System.out.println("\n\n3. Вывод реверсивного числа и суммы его цифр");
         num1 = 1234;
-        int sumNum =0;
+        int sumDigits =0;
         System.out.println("Исходное число: " + num1);
         System.out.print("Исходное число в обратном порядке: ");
         while (num1 != 0) {
-            num2 = num1 % 10;
-            System.out.print(num2);
-            sumNum += num2;
-            num1 = num1 / 10;
+            int digit = num1 % 10;
+            System.out.print(digit);
+            sumDigits += digit;
+            num1 /= 10;
         }
-        System.out.println("\nСумма его цифр: " + sumNum);
+        System.out.println("\nСумма его цифр: " + sumDigits);
 
         System.out.println("\n4. Вывод чисел на консоль в несколько строк");
         for (int i = 1; i < 24; i+=2) {
             if (i == 11 || i == 21) {
                 System.out.println();
             }
-            if (i / 10 % 10 == 0) {
-                System.out.printf("%2d ", i);
-            } else if (i >= 11 && i < 21) {
-                System.out.printf("%d ", i);
-            } else if (i == 21) {
+            if (i == 21) {
                 for (int j = 0; j < 3; j++) {
                     if (j >= 1) {
                         System.out.printf("%3d", 0);
                     } else {
                         System.out.printf("%2d", 0);
                     }
-                    
                 }
                 System.out.printf("%3d ", i);
             } else {
@@ -83,23 +74,18 @@ class CyclesTheme {
         System.out.println("\n\n5. Проверка количества двоек на четность");
         num1 = 3242592;
         System.out.printf("Число %d содержит количество двоек: ", num1);
-        counter = 1;
-        int evenSecond = 0;
-        int oddSecond = 0;
+        counter = 0;
         
         while (num1 !=0 ) {
-            num2 = num1 % 10;
-            if (num2 == 2 && counter % 2 == 0) {
-                evenSecond++;
-            } else if (num2 == 2 && counter % 2 != 0) {
-                oddSecond++;
+            if (num1 % 10 == 2) {
+                counter++;
             }
             num1 /= 10;
-            counter++;
         }
-        System.out.printf("%d четных и %d нечетных", evenSecond, oddSecond);
+        System.out.println((counter %2 == 0) ? "Четное" : "Нечетное");
+
+        System.out.println("\n6. Отображение фигур в консоли");
         int counter2 = 10;
-        System.out.println("\n\n6. Отображение фигур в консоли");
         for (int i = 5; i > 0; i--) {
             for (int j = 0; j < 10; j++) {
                 System.out.print('*');
