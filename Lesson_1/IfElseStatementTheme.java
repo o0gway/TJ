@@ -100,11 +100,9 @@ class IfElseStatementTheme {
         
         System.out.println("\n6. Подсчет суммы вклада и начисленных банком %");
         int deposit = 300_000;
-        int percent = 0;
+        int percent = 5;
         System.out.printf("Ваш вклад составляет: %d\n", deposit);
-        if (deposit < 100_000) {
-            percent = 5;
-        } else if (deposit >= 100_000 && deposit <= 300_000) {
+        if (deposit >= 100_000 && deposit <= 300_000) {
             percent = 7;
         } else if (deposit > 300_000) {
             percent = 10;
@@ -155,40 +153,37 @@ class IfElseStatementTheme {
         } 
 
         System.out.println("\n9. Подсчет количества банкнот");
-        int withdrawedMoney = 567;
+        int withdrawedMoney = 101;
         int atAtmBanknote1 = 50;
-        int atAtmBanknote10 = 50;
-        int atAtmBanknote100 = 1000;
-        int withdrawedMoneyBanknote1 = 0;
-        int withdrawedMoneyBanknote10 = 0;
-        int withdrawedMoneyBanknote100 = 0;
+        int atAtmBanknote10 = 5;
+        int atAtmBanknote100 = 10;
+        int withdrawedBanknote1 = 0;
+        int withdrawedBanknote10 = 0;
+        int withdrawedBanknote100 = 0;
         // Снимаем сотни
-        if (atAtmBanknote100 > withdrawedMoney) {
-            withdrawedMoneyBanknote100 = withdrawedMoney / 100 % 10;
-            atAtmBanknote100 -= withdrawedMoneyBanknote100 * 100;
-            System.out.printf("Снято банкнот номиналом 100: %d\n", withdrawedMoneyBanknote100);
-            withdrawedMoney = withdrawedMoney - withdrawedMoneyBanknote100 * 100;
-        } else {
-            System.out.println("Снято банкнот номиналом 100: 0");
-        }
+        withdrawedBanknote100 = withdrawedMoney / 100 % 10;
+        if (withdrawedBanknote100 <= atAtmBanknote100) {
+            atAtmBanknote100 -= withdrawedBanknote100;
+            withdrawedMoney = withdrawedMoney - withdrawedBanknote100 * 100;
+        } 
+        System.out.printf("Снято банкнот номиналом 100: %d\n", withdrawedBanknote100);
         // Снимаем десятки
-        if (atAtmBanknote10 > withdrawedMoney) {
-            withdrawedMoneyBanknote10 = withdrawedMoney / 10 % 10;
-            atAtmBanknote10 -= withdrawedMoneyBanknote10 * 10;
-            System.out.printf("Снято банкнот номиналом 10: %d\n", withdrawedMoneyBanknote10);
-            withdrawedMoney = withdrawedMoney - withdrawedMoneyBanknote10 * 10;
+        withdrawedBanknote10 = withdrawedMoney / 10 % 10;
+        if (withdrawedBanknote10 <= atAtmBanknote10) {
+            atAtmBanknote10 -= withdrawedBanknote10;
+            withdrawedMoney = withdrawedMoney - withdrawedBanknote10 * 10;
         } else {
-            withdrawedMoneyBanknote10 = atAtmBanknote10 / 10 % 10;
-            atAtmBanknote10 -= withdrawedMoneyBanknote10 * 10;
-            System.out.printf("Снято банкнот номиналом 10: %d\n", withdrawedMoneyBanknote10);
-            withdrawedMoney = withdrawedMoney - withdrawedMoneyBanknote10 * 10;
+            withdrawedBanknote10 = atAtmBanknote10;
+            atAtmBanknote10 = 0;
+            withdrawedMoney = withdrawedMoney - withdrawedBanknote10 * 10;
         }
+        System.out.printf("Снято банкнот номиналом 10: %d\n", withdrawedBanknote10);
         // Снимаем единицы
-        withdrawedMoneyBanknote1 = withdrawedMoney;
-        atAtmBanknote1 -= withdrawedMoneyBanknote1;
-        System.out.printf("Снято банкнот номиналом 1: %d\n", withdrawedMoneyBanknote1);
+        withdrawedBanknote1 = withdrawedMoney;
+        atAtmBanknote1 -= withdrawedBanknote1;
+        System.out.printf("Снято банкнот номиналом 1: %d\n", withdrawedBanknote1);
         // Считаем деньги которые мы сняли
-        withdrawedMoney = withdrawedMoneyBanknote100 * 100 + withdrawedMoneyBanknote10 * 10 + withdrawedMoneyBanknote1; 
+        withdrawedMoney = withdrawedBanknote100 * 100 + withdrawedBanknote10 * 10 + withdrawedBanknote1; 
         System.out.printf("Общую сумму которую вы сняли: %d\n", withdrawedMoney);
         System.out.printf("В банкомате осталось 100 - %d, 10 - %d, 1 - %d", 
                 atAtmBanknote100, atAtmBanknote10, atAtmBanknote1);
