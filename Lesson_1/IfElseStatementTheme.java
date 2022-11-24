@@ -157,19 +157,16 @@ class IfElseStatementTheme {
         int atAtmBanknote1 = 50;
         int atAtmBanknote10 = 5;
         int atAtmBanknote100 = 10;
-        int withdrawedBanknote1 = 0;
-        int withdrawedBanknote10 = 0;
-        int withdrawedBanknote100 = 0;
         // Снимаем сотни
-        withdrawedBanknote100 = withdrawedMoney / 100 % 10;
-        if (withdrawedBanknote100 <= atAtmBanknote100) {
+        int withdrawedBanknote100 = withdrawedMoney / 100 % 10;
+        if (atAtmBanknote100 >= withdrawedBanknote100) {
             atAtmBanknote100 -= withdrawedBanknote100;
             withdrawedMoney = withdrawedMoney - withdrawedBanknote100 * 100;
         } 
         System.out.printf("Снято банкнот номиналом 100: %d\n", withdrawedBanknote100);
         // Снимаем десятки
-        withdrawedBanknote10 = withdrawedMoney / 10 % 10;
-        if (withdrawedBanknote10 <= atAtmBanknote10) {
+        int withdrawedBanknote10 = withdrawedMoney / 10 % 10;
+        if (atAtmBanknote10 >= withdrawedBanknote10) {
             atAtmBanknote10 -= withdrawedBanknote10;
             withdrawedMoney = withdrawedMoney - withdrawedBanknote10 * 10;
         } else {
@@ -179,7 +176,7 @@ class IfElseStatementTheme {
         }
         System.out.printf("Снято банкнот номиналом 10: %d\n", withdrawedBanknote10);
         // Снимаем единицы
-        withdrawedBanknote1 = withdrawedMoney;
+        int withdrawedBanknote1 = withdrawedMoney;
         atAtmBanknote1 -= withdrawedBanknote1;
         System.out.printf("Снято банкнот номиналом 1: %d\n", withdrawedBanknote1);
         // Считаем деньги которые мы сняли
