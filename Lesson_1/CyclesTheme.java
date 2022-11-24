@@ -24,13 +24,13 @@ class CyclesTheme {
         int minNum = num1;
         int maxNum = num2;
         // Находим максимальное число
-        if (num1 > maxNum && num1 > num3) {
+        if (maxNum < num1 && maxNum > num3) {
             maxNum = num1;
         } else {
             maxNum = num3;
         }
         // Находим минимальное число
-        if (num2 < minNum && num2 < num3) {
+        if (minNum > num2 && minNum < num3) {
             minNum = num2;
         } else {
             minNum = num3;
@@ -57,25 +57,24 @@ class CyclesTheme {
             if (i == 11 || i == 21) {
                 System.out.println();
             }
-            if (i == 21) {
-                for (int j = 0; j < 3; j++) {
-                    System.out.printf("%3d", 0);
-                }
-            }
             System.out.printf("%3d", i);
         }
+        for (int j = 0; j < 3; j++) {
+            System.out.printf("%3d", 0);
+        }
+
         System.out.println("\n\n5. Проверка количества двоек на четность");
         num1 = 3242592;
         System.out.printf("Число %d содержит количество двоек: ", num1);
-        int quantityDeuce = 0;
+        int quantityTwos = 0;
         
         while (num1 != 0) {
             if (num1 % 10 == 2) {
-                quantityDeuce++;
+                quantityTwos++;
             }
             num1 /= 10;
         }
-        System.out.println((quantityDeuce % 2 == 0) ? "Четное" : "Нечетное");
+        System.out.println((quantityTwos % 2 == 0) ? "Четное" : "Нечетное");
 
         System.out.println("\n6. Отображение фигур в консоли");
         int counterSharp;
@@ -111,15 +110,15 @@ class CyclesTheme {
         
         System.out.println("\n8. Проверка, является ли число палиндромом");
         int srcNum = 1234321;
-        int palindrome = srcNum;
-        int palindromeNew = 0;
-        counter = 1;
-        while (palindrome > 0) {
-            palindromeNew += srcNum / counter % 10 * counter;
-            palindrome /= 10;
-            counter *= 10;
+        int copySrcNum = srcNum;
+        int copySrcNumNew = 0;
+
+        for (int i = 1; copySrcNum > 0;) {
+            copySrcNumNew += srcNum / i % 10 * i;
+            copySrcNum /= 10;
+            i *= 10;
         }
-        if (srcNum == palindromeNew){
+        if (srcNum == copySrcNumNew) {
             System.out.printf("Число %d является палиндромом", srcNum);
         } else {
             System.out.printf("Число %d не является палиндромом", srcNum);
@@ -129,14 +128,13 @@ class CyclesTheme {
         int luckyNum = 123456;
         int sum1 = 0;
         int sum2 = 0;
-        for (int i=0; i < 6; i++) {
-            if (luckyNum > 999) {
-                sum2 += luckyNum % 10;
-                luckyNum /= 10;
-            } else {
-                sum1 += luckyNum % 10;
-                luckyNum /= 10;
-            }
+        int firstLuckyNum = luckyNum / 1000;
+        int secondLuckyNum = (int) ((luckyNum * 0.001 - firstLuckyNum) * 1000);
+        for (int i=0; i < 3; i++) {
+            sum1 += firstLuckyNum % 10;
+            sum2 += secondLuckyNum % 10;
+            firstLuckyNum /= 10;
+            secondLuckyNum /= 10;
         }
         System.out.println("Сумма первой тройки цифр = " + sum1);
         System.out.println("Сумма второй тройки цифр = " + sum2);
@@ -156,17 +154,19 @@ class CyclesTheme {
             }
         }
         System.out.println();
-        for (int i = 1; i < 10; i++) {
+
+        for (int i = 0; i < 26; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+        
+        for (int i = 2; i < 10; i++) {
             for (int j = 1; j < 10; j++) {
-                if (i == 1) {
-                    for (int k = 0; k < 26; k++)
-                        System.out.print("-");
-                        break;
-                } else if (j == 1) {
+                if (j == 1) {
                     System.out.printf("%d|", i);
                 } else if (i >= 2) {
                     System.out.printf("%3d", j * i);
-                } 
+                }
             }
             System.out.println();
         }
