@@ -18,10 +18,10 @@ class CalculatorTest {
             c.setNum2(input.nextInt());
             c.calculate();
 
-            if (c.sign == '/' && c.num1 % c.num2 != 0) {
-                System.out.println(c.num1 + " " + c.sign + " " + c.num2 + " = " + c.result);
+            if (c.getSign() == '/' && c.getNum1() % c.getNum2() != 0) {
+                System.out.println(c.getNum1() + " " + c.getSign() + " " + c.getNum2() + " = " + c.getResult());
             } else {
-                System.out.println(c.num1 + " " + c.sign + " " + c.num2 + " = " + (int) c.result);
+                System.out.println(c.getNum1() + " " + c.getSign() + " " + c.getNum2() + " = " + (int) c.getResult());
             }
             
             do {
