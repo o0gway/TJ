@@ -3,38 +3,28 @@ import java.util.Scanner;
 class CalculatorTest {
     public static void main(String[] args) {
         System.out.println("“Калькулятор”");
-        Calculator c = new Calculator();
+        Calculator calc = new Calculator();
         Scanner input = new Scanner(System.in);
-        String repeatCalculation = "yes";
-        String userAnswer = repeatCalculation;
-        boolean isRepeat = true;
-        OUT:
-        while (isRepeat) {
+        String userAnswer = "yes";
+        while (userAnswer.equalsIgnoreCase("yes")) {
             System.out.print("Введите первое число: ");
-            c.setNum1(input.nextInt());
+            calc.setNum1(input.nextInt());
             System.out.print("Введите знак математической операции: ");
-            c.setSign(input.next().charAt(0));
+            calc.setSign(input.next().charAt(0));
             System.out.print("Введите второе число: ");
-            c.setNum2(input.nextInt());
-            c.calculate();
+            calc.setNum2(input.nextInt());
+            double result = calc.calculate();
 
-            if (c.getSign() == '/' && c.getNum1() % c.getNum2() != 0) {
-                System.out.println(c.getNum1() + " " + c.getSign() + " " + c.getNum2() + " = " + c.getResult());
+            if (calc.getSign() == '/' && calc.getNum1() % calc.getNum2() != 0) {
+                System.out.println(calc.getNum1() + " " + calc.getSign() + " " + calc.getNum2() + " = " + result);
             } else {
-                System.out.println(c.getNum1() + " " + c.getSign() + " " + c.getNum2() + " = " + (int) c.getResult());
+                System.out.println(calc.getNum1() + " " + calc.getSign() + " " + calc.getNum2() + " = " + (int) result);
             }
             
             do {
                 System.out.print("Хотите продолжить вычисления? [yes/no]: ");
                 userAnswer = input.next().strip();
-                if (userAnswer.equalsIgnoreCase("yes")) {
-                    isRepeat = true;
-                } else if (userAnswer.equalsIgnoreCase("no")) {
-                    break OUT;
-                } else {
-                    isRepeat = false;
-                }
-            } while (!isRepeat);
+            } while (!"yes".equalsIgnoreCase(userAnswer) && !"no".equalsIgnoreCase(userAnswer));
         }
         input.close();
     }
