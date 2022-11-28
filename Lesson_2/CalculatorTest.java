@@ -6,7 +6,7 @@ class CalculatorTest {
         Calculator calc = new Calculator();
         Scanner input = new Scanner(System.in);
         String userAnswer = "yes";
-        while (userAnswer.equalsIgnoreCase("yes")) {
+        while (userAnswer.equals("yes")) {
             System.out.print("Введите первое число: ");
             calc.setNum1(input.nextInt());
             System.out.print("Введите знак математической операции: ");
@@ -14,17 +14,20 @@ class CalculatorTest {
             System.out.print("Введите второе число: ");
             calc.setNum2(input.nextInt());
             double result = calc.calculate();
+            int num1 = calc.getNum1();
+            int num2 = calc.getNum2();
+            char sign = calc.getSign();
 
-            if (calc.getSign() == '/' && calc.getNum1() % calc.getNum2() != 0) {
-                System.out.println(calc.getNum1() + " " + calc.getSign() + " " + calc.getNum2() + " = " + result);
+            if (sign == '/' && num1 % num2 != 0) {
+                System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
             } else {
-                System.out.println(calc.getNum1() + " " + calc.getSign() + " " + calc.getNum2() + " = " + (int) result);
+                System.out.println(num1 + " " + sign + " " + num2 + " = " + (int) result);
             }
             
             do {
                 System.out.print("Хотите продолжить вычисления? [yes/no]: ");
-                userAnswer = input.next().strip();
-            } while (!"yes".equalsIgnoreCase(userAnswer) && !"no".equalsIgnoreCase(userAnswer));
+                userAnswer = input.next().strip().toLowerCase();
+            } while (!"yes".equals(userAnswer) && !"no".equals(userAnswer));
         }
         input.close();
     }

@@ -2,8 +2,8 @@ class Calculator {
     
     private int num1;
     private int num2;
+    private char sign;
     private double result;
-    char sign;
 
     public int getNum1() {
         return num1;
@@ -32,26 +32,22 @@ class Calculator {
     public double calculate() {
         switch (sign) {
             case '+': 
-                result = num1 + num2;
-                break;
+                return result = num1 + num2;
             case '-':
                 result = num1 - num2;
                 break;
             case '*':
-                result = num1 * num2;
-                break;
+                return result = num1 * num2;
             case '/':
-                result = (double) num1 / num2;
-                break;
+                return result = (double) num1 / num2;
             case '^':
-                for (int i =0; i < num2; i++) {
+                for (int i = 0; i < num2; i++) {
                     result *= num1;
                 }
-                break;
+                return result;
             case '%':
-                result = num1 % num2;
-                break;
+                return result = num1 % num2;
         }
-        return result;
+        return 0;
     }
 }
