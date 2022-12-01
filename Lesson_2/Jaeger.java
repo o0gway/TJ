@@ -100,7 +100,6 @@ public class Jaeger {
     }
 
     public void showInfo() {
-        System.out.println("\tПервый робот");
         System.out.println("Модель робота: " + modelName);
         System.out.println("Марк робота: " + mark);
         System.out.println("Произведен в: " + origin);
