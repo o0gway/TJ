@@ -99,6 +99,17 @@ public class Jaeger {
         System.out.println("stop");
     }
 
+    public void showInfo() {
+        System.out.println("\tПервый робот");
+        System.out.println("Модель робота: " + modelName);
+        System.out.println("Марк робота: " + mark);
+        System.out.println("Произведен в: " + origin);
+        System.out.println("Рост робота: " + height);
+        System.out.println("Вес робота: " + weight);
+        System.out.println("Мощность робота: " + strength);
+        System.out.println("Уровень защиты робота: " + armor);
+    }
+
     public static void toCompare(Jaeger jaeger1, Jaeger jaeger2) {
         System.out.println("Начинаем сравнивать двух роботов: " + jaeger1.modelName + " и " + jaeger2.modelName);
         if (jaeger1.modelName.equals(jaeger2.modelName)) {
@@ -146,9 +157,9 @@ public class Jaeger {
         if (jaeger1.strength == jaeger2.strength) {
             System.out.println("У этих роботов одинаковая защита");
         } else if (jaeger1.strength > jaeger2.strength) {
-            System.out.println(jaeger1.modelName + " мощнее защита чем " + jaeger2.modelName);
+            System.out.println(jaeger1.modelName + " защита мощнее чем " + jaeger2.modelName);
         } else {
-            System.out.println(jaeger2.modelName + " мощнее защита чем " + jaeger1.modelName);
+            System.out.println(jaeger2.modelName + " защита мощнее чем " + jaeger1.modelName);
         }
     }
 }
