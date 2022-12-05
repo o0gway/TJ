@@ -25,7 +25,7 @@ class GuessNumber {
         stop();
     }
 
-    public boolean enterNumber(Player player) {
+    public void enterNumber(Player player) {
         Scanner input = new Scanner(System.in);
         System.out.printf("Игрок %s введите свое число: ", player);
         int guessNumber = input.nextInt();
@@ -33,9 +33,8 @@ class GuessNumber {
             check(guessNumber);
         } else {
             player.upScore();
-            return flag = false;
+            flag = false;
         }
-        return flag;
     }
 
     public void check(int playerNum) {
