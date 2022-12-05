@@ -6,7 +6,6 @@ class GuessNumber {
     private Player player1;
     private Player player2;
     private int attempts = 1;
-    private boolean flag = true;
 
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
@@ -14,48 +13,39 @@ class GuessNumber {
     }
 
     public void start() {
-        secretNum = (int) (Math.random() * 100);
-        while (flag) {
+        secretNum = (int) (Math.random() * 100) + 1;
+        while (true) {
             enterNumber(player1);
-            if (!flag) {
+            if (!check(player1)) {
                 break;
             }
             enterNumber(player2);
+            if (!check(player2)) {
+                break;
+            }
         }
-        stop();
     }
 
     public void enterNumber(Player player) {
         Scanner input = new Scanner(System.in);
         System.out.printf("Игрок %s введите свое число: ", player);
-        int guessNumber = input.nextInt();
-        if (guessNumber != secretNum){
-            check(guessNumber);
-        } else {
-            player.upScore();
-            flag = false;
-        }
+        player.setGuessNumber(input.nextInt());
     }
 
-    public void check(int playerNum) {
-        if (playerNum > secretNum) {
-            System.out.printf("Попытка №%d. Число %d больше того, что я загадал\n", attempts, playerNum);
-        } else if (playerNum < secretNum) {
-            System.out.printf("Попытка №%d. Число %d меньше того, что я загадал\n", attempts, playerNum);
+    public boolean check(Player player) {
+        int guessNumber = player.getGuessNumber();
+        if (guessNumber > secretNum) {
+            System.out.printf("Попытка №%d. Число %d больше того, что я загадал\n", attempts, guessNumber);
+        } else if (guessNumber < secretNum) {
+            System.out.printf("Попытка №%d. Число %d меньше того, что я загадал\n", attempts, guessNumber);
+        } else if (guessNumber == secretNum) {
+            System.out.printf("Ура, %s победили! Загаданное число было: %d.\nВсего попыток было: %d\n", 
+                    player, secretNum, attempts);
+            player.upScore();
+            attempts = 1;
+            return false;
         }
         attempts++;
-    }
-
-    public void stop() {
-        System.out.printf("Ура, Вы победили! Загаданное число было: %d.\nВсего попыток было: %d\n", 
-                    secretNum, attempts);
-        attempts = 1;
-        flag = true;
-    }
-
-    public void end() {
-        System.out.println("Досвидания. Общий итог игры:");
-        System.out.printf("%-15s %d\n", player1, player1.getScore());
-        System.out.printf("%-15s %d\n", player2, player2.getScore());
+        return true;
     }
 }

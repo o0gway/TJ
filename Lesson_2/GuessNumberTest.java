@@ -10,16 +10,18 @@ public class GuessNumberTest {
         Player player2 = new Player(input.nextLine());
         GuessNumber game = new GuessNumber(player1, player2);
         System.out.println("Привет, Искусственный Интеллект загадал число от 1 до 100. Попробуйте угадать его!");
-        String userAnswer = "yes";
-        while (userAnswer.equals("yes")) {
+        String playerAnswer = "yes";
+        while (playerAnswer.equals("yes")) {
             game.start();
             do {
                 System.out.print("Хотите продолжить игру? [yes/no]: ");
-                userAnswer = input.next().strip().toLowerCase();
-            } while (!"yes".equals(userAnswer) && !"no".equals(userAnswer));
+                playerAnswer = input.next().strip().toLowerCase();
+            } while (!"yes".equals(playerAnswer) && !"no".equals(playerAnswer));
         }
 
-        game.end();
+        System.out.println("Досвидания. Общий итог игры:");
+        System.out.printf("%-15s %d\n", player1, player1.getScore());
+        System.out.printf("%-15s %d\n", player2, player2.getScore());
         input.close();
     }
 }
