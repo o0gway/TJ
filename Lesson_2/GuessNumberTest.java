@@ -19,9 +19,7 @@ public class GuessNumberTest {
             } while (!"yes".equals(playerAnswer) && !"no".equals(playerAnswer));
         }
 
-        System.out.println("Досвидания. Общий итог игры:");
-        System.out.printf("%-15s %d\n", player1, player1.getScore());
-        System.out.printf("%-15s %d\n", player2, player2.getScore());
+        game.exit();
         input.close();
     }
 }
