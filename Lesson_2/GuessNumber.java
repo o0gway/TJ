@@ -24,6 +24,7 @@ class GuessNumber {
                 break;
             }
         }
+        printGameResult();
     }
 
     public void enterNumber(Player player) {
@@ -35,22 +36,23 @@ class GuessNumber {
 
     public boolean compareNumbers(Player player) {
         int guessNumber = player.getGuessNumber();
-        if (guessNumber > secretNum) {
-            System.out.printf("Попытка №%d. Число %d больше того, что я загадал\n", attempts, guessNumber);
-        } else if (guessNumber < secretNum) {
-            System.out.printf("Попытка №%d. Число %d меньше того, что я загадал\n", attempts, guessNumber);
-        } else if (guessNumber == secretNum) {
+        if (guessNumber == secretNum) {
             System.out.printf("%s, поздравляем вас с победой! Загаданное число было: %d.\nВсего попыток было: %d\n", 
                     player, secretNum, attempts);
             player.upScore();
             attempts = 0;
             return false;
         }
+        if (guessNumber > secretNum) {
+            System.out.printf("Попытка №%d. Число %d больше того, что я загадал\n", attempts, guessNumber);
+        } else if (guessNumber < secretNum) {
+            System.out.printf("Попытка №%d. Число %d меньше того, что я загадал\n", attempts, guessNumber);
+        }
         return true;
     }
 
-    public void exit() {
-        System.out.println("До свидания, общий итог игры:");
+    public void printGameResult() {
+        System.out.println("Общий счет игры:");
         System.out.printf("%-15s %d\n", player1, player1.getScore());
         System.out.printf("%-15s %d\n", player2, player2.getScore());
     }

@@ -19,7 +19,6 @@ public class GuessNumberTest {
             } while (!"yes".equals(playerAnswer) && !"no".equals(playerAnswer));
         }
 
-        game.exit();
         input.close();
     }
 }
