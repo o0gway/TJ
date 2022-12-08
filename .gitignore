@@ -1,0 +1,5 @@
+# Bin files
+out/
+*.txt
+log/
+

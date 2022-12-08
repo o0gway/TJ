@@ -1,3 +1,5 @@
+package com.startjava.lesson_1.base;
+
 class IfElseStatementTheme {
     public static void main(String[] args) {
         System.out.println("\t\tЗадачки на тему");
