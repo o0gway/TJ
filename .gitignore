@@ -4,3 +4,5 @@ out/
 log/
 options
 optionsj
+.idea/
+*.iml
