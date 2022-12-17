@@ -9,26 +9,21 @@ class CalculatorTest {
         Scanner input = new Scanner(System.in);
         String userAnswer = "yes";
         while (userAnswer.equals("yes")) {
-            System.out.print("Введите первое число: ");
-            int num1 = input.nextInt();
-            calc.setNum1(num1);
-            System.out.print("Введите знак математической операции: ");
-            char sign = input.next().charAt(0);
-            calc.setSign(sign);
-            System.out.print("Введите второе число: ");
-            int num2 = input.nextInt();
-            calc.setNum2(num2);
+            System.out.print("Введите математическое выражение: ");
+            String expression = input.nextLine();
+            calc.setExpression(expression);
             double result = calc.calculate();
+            String[] expressionArr = calc.getExpressionArr();
 
-            if (sign == '/' && num1 % num2 != 0) {
-                System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
+            if (expressionArr[1].equals("/") && Integer.parseInt(expressionArr[0]) % Integer.parseInt(expressionArr[2]) != 0) {
+                System.out.println(Integer.parseInt(expressionArr[0]) + " " + expressionArr[1] + " " + Integer.parseInt(expressionArr[2]) + " = " + result);
             } else {
-                System.out.println(num1 + " " + sign + " " + num2 + " = " + (int) result);
+                System.out.println(Integer.parseInt(expressionArr[0]) + " " + expressionArr[1] + " " + Integer.parseInt(expressionArr[2]) + " = " + (int) result);
             }
             
             do {
                 System.out.print("Хотите продолжить вычисления? [yes/no]: ");
-                userAnswer = input.next().strip().toLowerCase();
+                userAnswer = input.nextLine().strip().toLowerCase();
             } while (!"yes".equals(userAnswer) && !"no".equals(userAnswer));
         }
         input.close();
