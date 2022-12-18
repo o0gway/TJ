@@ -11,14 +11,15 @@ class CalculatorTest {
         while (userAnswer.equals("yes")) {
             System.out.print("Введите математическое выражение: ");
             String expression = input.nextLine();
-            calc.setExpression(expression);
-            double result = calc.calculate();
+            double result = calc.calculate(expression);
             String[] expressionArr = calc.getExpressionArr();
+            int num1 = Integer.parseInt(expressionArr[0]);
+            int num2 = Integer.parseInt(expressionArr[2]);
 
-            if (expressionArr[1].equals("/") && Integer.parseInt(expressionArr[0]) % Integer.parseInt(expressionArr[2]) != 0) {
-                System.out.println(Integer.parseInt(expressionArr[0]) + " " + expressionArr[1] + " " + Integer.parseInt(expressionArr[2]) + " = " + result);
+            if (expressionArr[1].equals("/") && num1 % num2 != 0) {
+                System.out.println(num1 + " " + expressionArr[1] + " " + num2 + " = " + result);
             } else {
-                System.out.println(Integer.parseInt(expressionArr[0]) + " " + expressionArr[1] + " " + Integer.parseInt(expressionArr[2]) + " = " + (int) result);
+                System.out.println(num1 + " " + expressionArr[1] + " " + num2 + " = " + (int) result);
             }
             
             do {

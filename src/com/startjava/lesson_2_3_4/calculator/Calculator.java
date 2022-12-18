@@ -5,29 +5,28 @@ import java.util.Arrays;
 class Calculator {
 
     private String[] expressionArr;
-//    private double result;
 
     public String[] getExpressionArr() {
         return Arrays.copyOf(expressionArr, expressionArr.length);
     }
-    public void setExpression(String expression) {
-        expressionArr = expression.split(" ");
-    }
 
-    public double calculate() {
+    public double calculate(String expression) {
+        expressionArr = expression.split(" ");
+        int num1 = Integer.parseInt(expressionArr[0]);
+        int num2 = Integer.parseInt(expressionArr[2]);
         switch (expressionArr[1].charAt(0)) {
             case '+': 
-                return Integer.parseInt(expressionArr[0]) + Integer.parseInt(expressionArr[2]);
+                return num1 + num2;
             case '-':
-                return Integer.parseInt(expressionArr[0]) - Integer.parseInt(expressionArr[2]);
+                return num1 - num2;
             case '*':
-                return Integer.parseInt(expressionArr[0]) * Integer.parseInt(expressionArr[2]);
+                return num1 * num2;
             case '/':
-                return (double) Integer.parseInt(expressionArr[0]) / Integer.parseInt(expressionArr[2]);
+                return (double) num1 / num2;
             case '^':
-                return Math.pow(Integer.parseInt(expressionArr[0]), Integer.parseInt(expressionArr[2]));
+                return Math.pow(num1, num2);
             case '%':
-                return Integer.parseInt(expressionArr[0]) % Integer.parseInt(expressionArr[2]);
+                return num1 % num2;
         }
         return 0;
     }
