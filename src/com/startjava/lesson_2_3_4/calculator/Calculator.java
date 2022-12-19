@@ -4,17 +4,10 @@ import java.util.Arrays;
 
 class Calculator {
 
-    private String[] expressionArr;
-
-    public String[] getExpressionArr() {
-        return Arrays.copyOf(expressionArr, expressionArr.length);
-    }
-
-    public double calculate(String expression) {
-        expressionArr = expression.split(" ");
-        int num1 = Integer.parseInt(expressionArr[0]);
-        int num2 = Integer.parseInt(expressionArr[2]);
-        switch (expressionArr[1].charAt(0)) {
+    public double calculate(String[] expression) {
+        int num1 = Integer.parseInt(expression[0]);
+        int num2 = Integer.parseInt(expression[2]);
+        switch (expression[1].charAt(0)) {
             case '+': 
                 return num1 + num2;
             case '-':
