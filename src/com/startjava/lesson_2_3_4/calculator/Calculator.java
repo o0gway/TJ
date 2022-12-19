@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 class Calculator {
 
-    public double calculate(String[] expression) {
+    public static double calculate(String[] expression) {
         int num1 = Integer.parseInt(expression[0]);
         int num2 = Integer.parseInt(expression[2]);
         switch (expression[1].charAt(0)) {
