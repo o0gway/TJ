@@ -20,7 +20,7 @@ class CalculatorTest {
                 continue;
             }
 
-            if (num2 == 0) {
+            if (num2 == 0 && expression[1].equals("/")) {
                 System.out.println("На ноль делить нельзя");
                 continue;
             } else if (num1 < 0 || num2 < 0) {
