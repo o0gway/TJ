@@ -10,25 +10,13 @@ class CalculatorTest {
         while (userAnswer.equals("yes")) {
             System.out.print("Введите математическое выражение: ");
             String[] expression = input.nextLine().split(" ");
-            int num1;
-            int num2;
-            try {
-                num1 = Integer.parseInt(expression[0]);
-                num2 = Integer.parseInt(expression[2]);
-            } catch (NumberFormatException e) {
-                System.out.println("Один или оба операнды дробные числа");
+
+            if (Calculator.calculate(expression) == 0.1) {
                 continue;
             }
-
-            if (num2 == 0 && expression[1].equals("/")) {
-                System.out.println("На ноль делить нельзя");
-                continue;
-            } else if (num1 < 0 || num2 < 0) {
-                System.out.println("Один или оба операнды отрицательные числа");
-                continue;
-            }
-
             double result = Calculator.calculate(expression);
+            int num1 = Integer.parseInt(expression[0]);
+            int num2 = Integer.parseInt(expression[2]);
             if (expression[1].equals("/") && num1 % num2 != 0) {
                 System.out.println(num1 + " " + expression[1] + " " + num2 + " = " + result);
             } else {
