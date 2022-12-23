@@ -11,10 +11,9 @@ class CalculatorTest {
         while (userAnswer.equals("yes")) {
             System.out.print("Введите математическое выражение: ");
             String expression = input.nextLine();
-            String[] partsExpression = expression.split(" ");
             double result;
             try {
-                result = Calculator.calculate(partsExpression);
+                result = Calculator.calculate(expression);
             } catch (NumberFormatException e) {
                 System.out.println("Один или оба операнды дробные числа");
                 continue;
