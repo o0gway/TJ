@@ -6,33 +6,8 @@ public class Player {
     
     private String name;
     private int score;
-    private int guessNumber;
-    private int[] tryNums = new int[10];
     private int attempts;
-
-    public int[] getTryNums() {
-        return Arrays.copyOf(tryNums, GuessNumber.ATTEMPTS_ON_START - attempts);
-    }
-
-    public void addTryNums(int tryNum) {
-        tryNums[GuessNumber.ATTEMPTS_ON_START - attempts] = tryNum;
-    }
-
-    public void fillZeroTryNums() {
-        Arrays.fill(tryNums, 0);
-    }
-
-    public int getAttempts() {
-        return attempts;
-    }
-
-    public void setAttempts(int attempts) {
-        this.attempts = attempts;
-    }
-
-    public void decreaseAttempts() {
-        attempts--;
-    }
+    private int[] tryNums = new int[GuessNumber.ATTEMPTS_LIMIT];
 
     Player(String name) {
         this.name = name;
@@ -46,12 +21,28 @@ public class Player {
         score++;
     }
 
-    public int getGuessNumber() {
-        return guessNumber;
+    public int getAttempts() {
+        return attempts;
     }
 
-    public void setGuessNumber(int guessNumber) {
-        this.guessNumber = guessNumber;
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
+    }
+
+    public void increaseAttempts() {
+        attempts++;
+    }
+
+    public void clearAttempts() {
+        Arrays.fill(tryNums, GuessNumber.ATTEMPTS_ONSTART, attempts, 0);
+    }
+
+    public int[] getTryNums() {
+        return Arrays.copyOf(tryNums, attempts + 1);
+    }
+
+    public void addNumber(int number) {
+        tryNums[attempts] = number;
     }
 
     public String toString() {
