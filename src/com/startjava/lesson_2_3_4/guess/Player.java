@@ -21,28 +21,30 @@ public class Player {
         score++;
     }
 
+    public void resetScore() {
+        score = 0;
+    }
+
     public int getAttempts() {
         return attempts;
     }
 
-    public void setAttempts(int attempts) {
-        this.attempts = attempts;
-    }
-
-    public void increaseAttempts() {
-        attempts++;
-    }
-
     public void clearAttempts() {
-        Arrays.fill(tryNums, GuessNumber.ATTEMPTS_ONSTART, attempts, 0);
+        Arrays.fill(tryNums, 0, attempts, 0);
+        attempts = 0;
     }
 
     public int[] getTryNums() {
-        return Arrays.copyOf(tryNums, attempts + 1);
+        return Arrays.copyOf(tryNums, attempts);
     }
 
     public void addNumber(int number) {
-        tryNums[attempts] = number;
+        if (number > 0 && number <= 100) {
+            tryNums[attempts] = number;
+            attempts++;
+        } else {
+            throw new RuntimeException("Число не соотвествует диапозону от 1 до 100");
+        }
     }
 
     public String toString() {
