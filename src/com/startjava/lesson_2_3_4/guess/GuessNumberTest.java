@@ -6,7 +6,7 @@ public class GuessNumberTest {
     public static void main(String[] args) {
         System.out.println("Игра “Угадай число”");
         Scanner input = new Scanner(System.in);
-        GuessNumber game = new GuessNumber(args);
+        GuessNumber game = new GuessNumber();
         System.out.println("Привет, Искусственный Интеллект загадал число от 1 до 100. Попробуйте угадать его!");
         System.out.println("У каждого игрока по 10 попыток");
         String playerAnswer = "yes";

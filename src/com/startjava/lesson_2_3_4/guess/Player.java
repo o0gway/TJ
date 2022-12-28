@@ -39,12 +39,11 @@ public class Player {
     }
 
     public void addNumber(int number) {
-        if (number > 0 && number <= 100) {
-            tryNums[attempts] = number;
-            attempts++;
-        } else {
-            throw new RuntimeException("Число не соотвествует диапозону от 1 до 100");
+        if (number <= 0 || number > 100) {
+            throw new RuntimeException("Число не соответствует диапазону от 1 до 100");
         }
+        tryNums[attempts] = number;
+        attempts++;
     }
 
     public String toString() {
