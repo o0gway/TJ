@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Player {
     
     private String name;
-    private int score;
+    private int wins;
     private int attempts;
     private int[] tryNums = new int[GuessNumber.ATTEMPTS_LIMIT];
 
@@ -13,16 +13,16 @@ public class Player {
         this.name = name;
     }
 
-    public int getScore() {
-        return score;
+    public int getWins() {
+        return wins;
     }
 
     public void upScore() {
-        score++;
+        wins++;
     }
 
     public void resetScore() {
-        score = 0;
+        wins = 0;
     }
 
     public int getAttempts() {
@@ -38,11 +38,11 @@ public class Player {
         return Arrays.copyOf(tryNums, attempts);
     }
 
-    public void addNumber(int number) {
-        if (number <= 0 || number > 100) {
-            throw new RuntimeException("Число не соответствует диапазону от 1 до 100");
+    public void addNumber(int num) {
+        if (num <= 0 || num > 100) {
+            throw new ArithmeticException("Число не соответствует диапазону от 1 до 100");
         }
-        tryNums[attempts] = number;
+        tryNums[attempts] = num;
         attempts++;
     }
 
