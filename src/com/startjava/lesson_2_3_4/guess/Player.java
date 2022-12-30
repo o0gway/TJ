@@ -17,11 +17,11 @@ public class Player {
         return wins;
     }
 
-    public void upScore() {
+    public void upWins() {
         wins++;
     }
 
-    public void resetScore() {
+    public void resetWins() {
         wins = 0;
     }
 

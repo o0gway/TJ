@@ -9,7 +9,7 @@ class GuessNumber {
     private final int QUANTITY_PLAYERS;
     private int secretNum;
     public static final int ATTEMPTS_LIMIT = 10;
-    private static final int ROUNDS_LIMIT = 3;
+    private static int roundLimit = 3;
 
     public GuessNumber(Player[] players) {
         this.players = players;
@@ -18,8 +18,8 @@ class GuessNumber {
     }
 
     private void castLots() {
-        for (int i = 0; i < QUANTITY_PLAYERS ; i++) {
-            int queue = (int) (Math.random() * (QUANTITY_PLAYERS - i))  + i;
+        for (int i = QUANTITY_PLAYERS - 1; i >= 0; i--) {
+            int queue = (int) (Math.random() * (i + 1));
             Player tmp = players[i];
             players[i] = players[queue];
             players[queue] = tmp;
@@ -30,15 +30,23 @@ class GuessNumber {
         secretNum = (int) (Math.random() * 100) + 1;
         while (true) {
             boolean isWin = false;
+            boolean isHasAttempts = true;
             for (Player player : players) {
                 enterNumber(player);
                 if (compareNumbers(player)) {
                     isWin = true;
-                    printRoundResult(player);
+                    printRoundResult(player, isWin);
+                    break;
+                }
+                if (hasAttempts(player)) {
+                    isHasAttempts = false;
+                    printRoundResult(player, isHasAttempts);
                     break;
                 }
             }
-            if (isWin) {
+
+            if (isWin || !isHasAttempts) {
+                roundLimit--;
                 break;
             }
         }
@@ -46,10 +54,16 @@ class GuessNumber {
 
         for (Player player : players) {
             player.clearAttempts();
-            if (isWinner(player)) {
-                System.out.println("В этой игре побеждает " + player);
-            }
         }
+        if (roundLimit == 0) {
+            String player = "" + checkWinner();
+            if (!player.equals("null")) {
+                System.out.println("По сумме баллов за 3 раунда побеждает " + player);
+            }
+            roundLimit = 3;
+            resetWins(players);
+        }
+
     }
 
     private void enterNumber(Player player) {
@@ -69,24 +83,19 @@ class GuessNumber {
     private boolean compareNumbers(Player player) {
         int guessNumber = player.getTryNums()[player.getAttempts() - 1];
         if (guessNumber == secretNum) {
-            player.upScore();
+            player.upWins();
             return true;
         }
         System.out.println("Число " + guessNumber + (guessNumber > secretNum ? " больше " : " меньше ") +
                 "того, что я загадал");
-        return checkNoAttempts(player);
+        return false;
     }
 
-    private void printTryNums(Player player) {
-        for (int num : player.getTryNums()) {
-            System.out.print(num + " ");
+    private void printRoundResult(Player player, boolean isWin) {
+        if (isWin) {
+            System.out.printf("%s, поздравляем вас с победой! Загаданное число было: %d.\nВсего попыток было: %d\n",
+                    player, secretNum, player.getAttempts());
         }
-        System.out.println();
-    }
-
-    private void printRoundResult(Player player) {
-        System.out.printf("%s, поздравляем вас с победой! Загаданное число было: %d.\nВсего попыток было: %d\n",
-                player, secretNum, player.getAttempts());
         for (Player p : players) {
             System.out.print("Используемые числа " + p + ": ");
             printTryNums(p);
@@ -100,15 +109,11 @@ class GuessNumber {
         }
     }
 
-    private void printNoAttempts(Player player) {
-        System.out.println("У " + player + " закончились попытки");
-        printTryNums(player);
-    }
-
-    private boolean checkNoAttempts(Player player) {
+    private boolean hasAttempts(Player player) {
         if (player.getAttempts() >= ATTEMPTS_LIMIT) {
             printNoAttempts(player);
             if ( Arrays.asList(players).indexOf(player) == QUANTITY_PLAYERS - 1) {
+                System.out.println("В этом раунде нет победителей");
                 System.out.println("Загаданное число было: " + secretNum);
                 return true;
             }
@@ -116,17 +121,48 @@ class GuessNumber {
         return false;
     }
 
-    private boolean isWinner(Player player) {
-        if (player.getWins() == ROUNDS_LIMIT) {
-            resetScore(players);
-            return true;
-        }
-        return false;
+    private void printNoAttempts(Player player) {
+        System.out.println("У " + player + " закончились попытки");
+        printTryNums(player);
     }
 
-    private void resetScore(Player[] players) {
+    private void printTryNums(Player player) {
+        for (int num : player.getTryNums()) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+
+    private Player checkWinner() {
+        if (QUANTITY_PLAYERS == 3) {
+            int[] scores = new int[QUANTITY_PLAYERS];
+            for (int i = 0; i < QUANTITY_PLAYERS; i++) {
+                scores[i] = players[i].getWins();
+            }
+            if (scores[0] > scores[1] && scores[0] > scores[2]) {
+                return players[0];
+            } else if (scores[1] > scores[0] && scores[1] > scores[2]) {
+                return players[1];
+            } else if (scores[2] > scores[1] && scores[2] > scores[1]) {
+                return players[2];
+            } else {
+                System.out.println("По сумме баллов за 3 раунда ничья");
+                return null;
+            }
+        } else if (QUANTITY_PLAYERS == 2) {
+            if (players[0].getWins() > players[1].getWins()) {
+                return players[0];
+            } else {
+                return players[1];
+            }
+        }
+        return players[0];
+
+    }
+
+    private void resetWins(Player[] players) {
         for (int i = 0; i < QUANTITY_PLAYERS; i++) {
-            players[i].resetScore();
+            players[i].resetWins();
         }
     }
 }
