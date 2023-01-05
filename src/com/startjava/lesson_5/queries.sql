@@ -15,10 +15,10 @@ SELECT * FROM Jaegers WHERE mark NOT IN ('Mark-1', 'Mark-4');
 SELECT * FROM Jaegers ORDER BY mark DESC;
 
 \qecho -- Вывод информацию о самом старом роботе
-SELECT * FROM Jaegers ORDER BY launch DESC LIMIT 1;
+SELECT * FROM Jaegers ORDER BY launch LIMIT 1;
 
 \qecho -- Вывод информации о роботах, которые уничтожили больше всех kaiju
-SELECT * FROM Jaegers WHERE kaijuKill > 5;
+SELECT * FROM Jaegers WHERE kaijuKill = (SELECT MAX(kaijuKill) FROM Jaegers);
 
 \qecho -- Вывод среднего веса всех роботов
 SELECT ROUND(AVG("weight(kg)"), 2) AS "Средняя масса всех роботов" FROM Jaegers;
